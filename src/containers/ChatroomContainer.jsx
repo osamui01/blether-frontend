@@ -6,6 +6,9 @@ import ChatroomList from "../components/lists/ChatroomList";
 import NewUserForm from "../components/forms/NewUserForm";
 import NewChatroomForm from "../components/forms/NewChatroomForm";
 
+// import UserSelectForm from "../components/forms/UserSelectForm";
+import MessageList from "../components/lists/MessageList";
+
 const API_ROOT = "http://localhost:8080";
 
 const ChatroomContainer = () => {
@@ -13,14 +16,14 @@ const ChatroomContainer = () => {
   const [chatrooms, setChatrooms] = useState([]);
   const [messages, setMessages] = useState([]);
 
-  // const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState();
   // Look into using useContext
 
   const fetchUsers = async () => {
     const response = await fetch(`${API_ROOT}/users`);
     const jsonData = await response.json();
     setUsers(jsonData);
-    // setCurrentUser(jsonData[0]);
+    setCurrentUser(jsonData[0]);
   };
 
   const fetchChatrooms = async () => {
@@ -29,10 +32,35 @@ const ChatroomContainer = () => {
     setChatrooms(jsonData);
   };
 
+  // Will need to fetch messages for chatrooms later
   const fetchMessages = async () => {
     const response = await fetch(`${API_ROOT}/messages`);
     const jsonData = await response.json();
     setMessages(jsonData);
+  };
+
+  const fetchMessagesForUser = async (id) => {
+    const response = await fetch(`${API_ROOT}/messages/user/` + id);
+    const jsonData = await response.json();
+    setMessages(jsonData);
+  };
+
+  // const postMessage = async (newUserMessage) => {
+  //   const response = await fetch(`${API_ROOT}/messages/user`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(newUserMessage),
+  //   });
+  //   const savedMessage = await response.json();
+  //   setUsers([...messages, savedMessage]);
+  // };
+
+  const deleteMessage = async (id) => {
+    await fetch(`${API_ROOT}/messages/user/` + id, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    setMessages(users.filter((message) => message.id !== id));
   };
 
   const postUser = async (newUser) => {
@@ -78,7 +106,11 @@ const ChatroomContainer = () => {
       children: [
         {
           path: "/messages",
-          element: <></>,
+          element: (
+            <>
+              <MessageList messages={messages} deleteMessage={deleteMessage} />
+            </>
+          ),
         },
         {
           path: "/users",
@@ -104,6 +136,12 @@ const ChatroomContainer = () => {
       ],
     },
   ]);
+
+  useEffect(() => {
+    if (currentUser) {
+      fetchMessagesForUser(currentUser.id);
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     fetchUsers();
