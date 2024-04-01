@@ -7,7 +7,7 @@ const User = ({ user, deleteUser }) => {
     <>
       <p>User: {user.name}</p>
       <p>Email: {user.email}</p>
-      <p>Date of Birth: {user.dateOfBirth}</p>
+      <p>D.O.B: {user.dateOfBirth}</p>
       <button onClick={handleUserDelete}>Delete</button>
       <hr />
     </>
