@@ -23,7 +23,7 @@ const ChatroomContainer = () => {
     const response = await fetch(`${API_ROOT}/users`);
     const jsonData = await response.json();
     setUsers(jsonData);
-    setCurrentUser(jsonData[0]);
+    // setCurrentUser(jsonData[0]);
   };
 
   const fetchChatrooms = async () => {
@@ -141,6 +141,7 @@ const ChatroomContainer = () => {
     if (currentUser) {
       fetchMessagesForUser(currentUser.id);
     }
+    fetchMessages();
   }, [currentUser]);
 
   useEffect(() => {
