@@ -125,6 +125,7 @@ const ChatroomContainer = () => {
           path: "/messages",
           element: (
             <>
+              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <MessageList messages={messages} deleteMessage={deleteMessage} />
             </>
           ),
@@ -148,6 +149,7 @@ const ChatroomContainer = () => {
           path: "/chatrooms",
           element: (
             <>
+              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <NewChatroomForm postChatroom={postChatroom} />
               <ChatroomList
                 chatrooms={chatrooms}
@@ -161,7 +163,7 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-    fetchMessagesForUser(currentUserId);
+      fetchMessagesForUser(currentUserId);
   }, [currentUserId]);
 
   useEffect(() => {
@@ -173,7 +175,7 @@ const ChatroomContainer = () => {
   return (
     <>
       <h1>Big Blether</h1>
-      <UserSelectForm users={users} setCurrentUserId={setCurrentUserId} />
+
       <RouterProvider router={chatroomRoutes} />
     </>
   );
