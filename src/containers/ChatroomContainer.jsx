@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import UserList from "../components/lists/UserList";
 import ChatroomList from "../components/lists/ChatroomList";
@@ -9,6 +9,7 @@ import UserSelectForm from "../components/forms/UserSelectForm";
 
 // import UserSelectForm from "../components/forms/UserSelectForm";
 import MessageList from "../components/lists/MessageList";
+import EditUserForm from "../components/forms/EditUserForm";
 
 const API_ROOT = "http://localhost:8080";
 
@@ -73,6 +74,18 @@ const ChatroomContainer = () => {
     setUsers([...users, savedUser]);
   };
 
+  const updateUser = async (user) => {
+    console.log(user);
+    await fetch(`${API_ROOT}/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json" 
+      },
+      body: JSON.stringify(user)
+    });
+    await fetchUsers();
+  }
+
   const deleteUser = async (id) => {
     await fetch(`${API_ROOT}/users/` + id, {
       method: "DELETE",
@@ -99,6 +112,10 @@ const ChatroomContainer = () => {
     setChatrooms(chatrooms.filter((chatroom) => chatroom.id !== id));
   };
 
+  const userLoader = ({params}) => {
+    return users.find((user) => user.id === parseInt(params.id));
+  }
+
   const chatroomRoutes = createBrowserRouter([
     {
       path: "/",
@@ -119,8 +136,14 @@ const ChatroomContainer = () => {
             <>
               <NewUserForm postUser={postUser} />
               <UserList users={users} deleteUser={deleteUser} />
+
             </>
           ),
+        },
+        {
+          path: "/users/:id/edit",
+          loader: userLoader,
+          element: (<EditUserForm updateUser={updateUser}/>)
         },
         {
           path: "/chatrooms",
@@ -152,6 +175,7 @@ const ChatroomContainer = () => {
   return (
     <>
       <h1>Big Blether</h1>
+
       <RouterProvider router={chatroomRoutes} />
     </>
   );
