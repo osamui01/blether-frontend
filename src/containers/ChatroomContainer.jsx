@@ -56,11 +56,11 @@ const ChatroomContainer = () => {
   // };
 
   const deleteMessage = async (id) => {
-    await fetch(`${API_ROOT}/messages/user/` + id, {
+    await fetch(`${API_ROOT}/messages/` + id, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
-    setMessages(users.filter((message) => message.id !== id));
+    setMessages(messages.filter((message) => message.id !== id));
   };
 
   const postUser = async (newUser) => {
