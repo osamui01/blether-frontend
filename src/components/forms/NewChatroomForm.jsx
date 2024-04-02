@@ -30,20 +30,23 @@ const NewChatroomForm = ({ postChatroom }) => {
           placeholder="Name"
           value={name}
           onChange={(event) => setName(event.target.value)}
+          required
         />
 
         <input
-          type="text"
+          type="number"
           placeholder="Capacity"
           value={capacity}
           onChange={(event) => setCapacity(event.target.value)}
+          required
         />
 
         <input
-          type="text"
+          type="number"
           placeholder="Age limit"
           value={ageLimit}
           onChange={(event) => setAgeLimit(event.target.value)}
+          required
         />
 
         <input type="submit" value="Create Chatroom" />
