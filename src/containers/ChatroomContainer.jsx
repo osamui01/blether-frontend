@@ -24,7 +24,6 @@ const ChatroomContainer = () => {
     const response = await fetch(`${API_ROOT}/users`);
     const jsonData = await response.json();
     setUsers(jsonData);
-    setCurrentUser(jsonData[0]);
   };
 
   const fetchChatrooms = async () => {
@@ -109,7 +108,7 @@ const ChatroomContainer = () => {
           path: "/messages",
           element: (
             <>
-              <UserSelectForm users={users} setCurrentId={setCurrentUserId}/>
+              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <MessageList messages={messages} deleteMessage={deleteMessage} />
             </>
           ),
@@ -127,7 +126,7 @@ const ChatroomContainer = () => {
           path: "/chatrooms",
           element: (
             <>
-              <UserSelectForm users={users} setCurrentId={setCurrentUserId}/>
+              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <NewChatroomForm postChatroom={postChatroom} />
               <ChatroomList
                 chatrooms={chatrooms}
@@ -142,7 +141,6 @@ const ChatroomContainer = () => {
 
   useEffect(() => {
       fetchMessagesForUser(currentUserId);
-    fetchMessages();
   }, [currentUserId]);
 
   useEffect(() => {

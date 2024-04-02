@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const UserSelectForm = ({setCurrentId, users}) => {
+const UserSelectForm = ({setCurrentUserId, users}) => {
 
   const handleChange = (event) => {
     setCurrentUserId(event.target.value)
