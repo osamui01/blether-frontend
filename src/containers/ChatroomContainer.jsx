@@ -17,14 +17,13 @@ const ChatroomContainer = () => {
   const [chatrooms, setChatrooms] = useState([]);
   const [messages, setMessages] = useState([]);
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUserId, setCurrentUserId] = useState(0);
   // Look into using useContext
 
   const fetchUsers = async () => {
     const response = await fetch(`${API_ROOT}/users`);
     const jsonData = await response.json();
     setUsers(jsonData);
-    setCurrentUser(jsonData[0]);
   };
 
   const fetchChatrooms = async () => {
@@ -139,11 +138,8 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-    if (currentUser) {
-      fetchMessagesForUser(currentUser.id);
-    }
-    fetchMessages();
-  }, [currentUser]);
+      fetchMessagesForUser(currentUserId);
+  }, [currentUserId]);
 
   useEffect(() => {
     fetchUsers();
@@ -154,7 +150,7 @@ const ChatroomContainer = () => {
   return (
     <>
       <h1>Big Blether</h1>
-      <UserSelectForm />
+      <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
       <RouterProvider router={chatroomRoutes} />
     </>
   );
