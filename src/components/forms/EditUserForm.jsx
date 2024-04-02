@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useLoaderData, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, useLoaderData } from 'react-router-dom';
 
 
 const EditUserForm = ({updateUser}) => {
