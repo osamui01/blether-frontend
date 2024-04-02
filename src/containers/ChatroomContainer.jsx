@@ -74,6 +74,18 @@ const ChatroomContainer = () => {
     setUsers([...users, savedUser]);
   };
 
+  const updateUser = async (user) => {
+    console.log(user);
+    await fetch(`${API_ROOT}/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json" 
+      },
+      body: JSON.stringify(user)
+    });
+    await fetchUsers();
+  }
+
   const deleteUser = async (id) => {
     await fetch(`${API_ROOT}/users/` + id, {
       method: "DELETE",
@@ -130,7 +142,7 @@ const ChatroomContainer = () => {
         {
           path: "/users/:id/edit",
           loader: userLoader,
-          element: (<EditUserForm users={users}/>)
+          element: (<EditUserForm updateUser={updateUser}/>)
         },
         {
           path: "/chatrooms",

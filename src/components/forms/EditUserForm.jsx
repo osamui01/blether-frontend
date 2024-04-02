@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useNavigate, useLoaderData, useParams } from 'react-router-dom';
 
 
-const EditUserForm = ({users}) => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState("");
-    
+const EditUserForm = ({updateUser}) => {
     const user = useLoaderData();
+    const navigate = useNavigate();
+
+    const [name, setName] = useState(user.name);
+    const [email, setEmail] = useState(user.email);
+    const [dateOfBirth, setDateOfBirth] = useState(user.dateOfBirth);
+    
 
 
     const handleFormSubmit = (event) => {
       event.preventDefault();
   
-      const newUser = {
+      const updatedUser = {
+        id: user.id,
         name,
         email,
         dateOfBirth,
       };
-  
+      updateUser(updatedUser);
       setName("");
       setEmail("");
       setDateOfBirth("");
+      navigate("/users");
     };
 
 
