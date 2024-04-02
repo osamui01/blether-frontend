@@ -141,11 +141,9 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-    if (currentUser) {
-      fetchMessagesForUser(currentUser.id);
-    }
+      fetchMessagesForUser(currentUserId);
     fetchMessages();
-  }, [currentUser]);
+  }, [currentUserId]);
 
   useEffect(() => {
     fetchUsers();
