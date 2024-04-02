@@ -109,6 +109,7 @@ const ChatroomContainer = () => {
           path: "/messages",
           element: (
             <>
+              <UserSelectForm currentUser={currentUser}/>
               <MessageList messages={messages} deleteMessage={deleteMessage} />
             </>
           ),
@@ -154,7 +155,6 @@ const ChatroomContainer = () => {
   return (
     <>
       <h1>Big Blether</h1>
-      <UserSelectForm />
       <RouterProvider router={chatroomRoutes} />
     </>
   );
