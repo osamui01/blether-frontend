@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import UserList from "../components/lists/UserList";
 import ChatroomList from "../components/lists/ChatroomList";
@@ -9,6 +9,7 @@ import UserSelectForm from "../components/forms/UserSelectForm";
 
 // import UserSelectForm from "../components/forms/UserSelectForm";
 import MessageList from "../components/lists/MessageList";
+import EditUserForm from "../components/forms/EditUserForm";
 
 const API_ROOT = "http://localhost:8080";
 
@@ -99,6 +100,10 @@ const ChatroomContainer = () => {
     setChatrooms(chatrooms.filter((chatroom) => chatroom.id !== id));
   };
 
+  const userLoader = ({params}) => {
+    return users.find((user) => user.id === parseInt(params.id));
+  }
+
   const chatroomRoutes = createBrowserRouter([
     {
       path: "/",
@@ -118,8 +123,14 @@ const ChatroomContainer = () => {
             <>
               <NewUserForm postUser={postUser} />
               <UserList users={users} deleteUser={deleteUser} />
+
             </>
           ),
+        },
+        {
+          path: "/users/:id/edit",
+          loader: userLoader,
+          element: (<EditUserForm users={users}/>)
         },
         {
           path: "/chatrooms",
@@ -138,7 +149,7 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-      fetchMessagesForUser(currentUserId);
+    fetchMessagesForUser(currentUserId);
   }, [currentUserId]);
 
   useEffect(() => {
@@ -150,7 +161,7 @@ const ChatroomContainer = () => {
   return (
     <>
       <h1>Big Blether</h1>
-      <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
+      <UserSelectForm users={users} setCurrentUserId={setCurrentUserId} />
       <RouterProvider router={chatroomRoutes} />
     </>
   );
