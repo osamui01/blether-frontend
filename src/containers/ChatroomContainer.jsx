@@ -5,6 +5,7 @@ import UserList from "../components/lists/UserList";
 import ChatroomList from "../components/lists/ChatroomList";
 import NewUserForm from "../components/forms/NewUserForm";
 import NewChatroomForm from "../components/forms/NewChatroomForm";
+import UserSelectForm from "../components/forms/UserSelectForm";
 
 // import UserSelectForm from "../components/forms/UserSelectForm";
 import MessageList from "../components/lists/MessageList";
@@ -153,6 +154,7 @@ const ChatroomContainer = () => {
   return (
     <>
       <h1>Big Blether</h1>
+      <UserSelectForm />
       <RouterProvider router={chatroomRoutes} />
     </>
   );
