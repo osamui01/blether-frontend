@@ -6,7 +6,7 @@ const EditChatroomForm = ({updateChatroom}) => {
     const chatroom = useLoaderData();
     const navigate = useNavigate();
 
-    const [chatroomName, setChatroomName] = useState(chatroom.name);
+    const [name, setName] = useState(chatroom.name);
     const [capacity, setCapacity] = useState(chatroom.capacity);
     const [ageLimit, setAgeLimit] = useState(chatroom.ageLimit);
     
@@ -17,13 +17,13 @@ const EditChatroomForm = ({updateChatroom}) => {
   
       const updatedChatroom = {
         id: chatroom.id,
-        chatroomName,
+        name,
         capacity,
         ageLimit,
 
       };
       updateChatroom(updatedChatroom);
-      setChatroomName("");
+      setName("");
       setCapacity("");
       setAgeLimit("");
       navigate("/chatrooms");
@@ -37,8 +37,8 @@ const EditChatroomForm = ({updateChatroom}) => {
             <input
                 type="text"
                 placeholder="Name"
-                value={chatroom}
-                onChange={(event) => setChatroomName(event.target.value)}
+                value= {name}
+                onChange={(event) => setName(event.target.value)}
                 required
             />
 
