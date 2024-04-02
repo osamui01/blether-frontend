@@ -17,7 +17,7 @@ const ChatroomContainer = () => {
   const [chatrooms, setChatrooms] = useState([]);
   const [messages, setMessages] = useState([]);
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUserId, setCurrentUserId] = useState(0);
   // Look into using useContext
 
   const fetchUsers = async () => {
