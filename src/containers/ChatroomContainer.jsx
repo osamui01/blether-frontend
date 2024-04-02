@@ -109,7 +109,7 @@ const ChatroomContainer = () => {
           path: "/messages",
           element: (
             <>
-              <UserSelectForm currentUser={currentUser}/>
+              <UserSelectForm users={users} setCurrentId={setCurrentUserId}/>
               <MessageList messages={messages} deleteMessage={deleteMessage} />
             </>
           ),
@@ -127,6 +127,7 @@ const ChatroomContainer = () => {
           path: "/chatrooms",
           element: (
             <>
+              <UserSelectForm users={users} setCurrentId={setCurrentUserId}/>
               <NewChatroomForm postChatroom={postChatroom} />
               <ChatroomList
                 chatrooms={chatrooms}
