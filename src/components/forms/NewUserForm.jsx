@@ -30,6 +30,7 @@ const NewUserForm = ({ postUser }) => {
           placeholder="Name"
           value={name}
           onChange={(event) => setName(event.target.value)}
+          required
         />
 
         <input
@@ -37,13 +38,15 @@ const NewUserForm = ({ postUser }) => {
           placeholder="Email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          required
         />
 
         <input
-          type="text"
+          type="date"
           placeholder="Date of Birth"
           value={dateOfBirth}
           onChange={(event) => setDateOfBirth(event.target.value)}
+          required
           // Must be in "1980-03-06" format - add to form validation
         />
 
