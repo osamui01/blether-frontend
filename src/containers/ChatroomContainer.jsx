@@ -191,7 +191,7 @@ const ChatroomContainer = () => {
       ),
       children: [
         {
-          path: "/messages",
+          path: "/profile",
           element: (
             <>
               <EditUserForm
