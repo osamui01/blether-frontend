@@ -1,4 +1,5 @@
 import Chatroom from "../Chatroom";
+import "../../styles/lists/ChatroomList.css";
 
 const ChatroomList = ({ chatrooms, deleteChatroom }) => {
   const chatroomComponents = chatrooms.map((chatroom) => {
@@ -12,8 +13,10 @@ const ChatroomList = ({ chatrooms, deleteChatroom }) => {
   });
   return (
     <>
-      <h3>Chatroom List</h3>
-      {chatroomComponents}
+      <div className="chatroom">
+        <h3>Chatroom List</h3>
+        <div className="chatroom-grid">{chatroomComponents}</div>
+      </div>
     </>
   );
 };
