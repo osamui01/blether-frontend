@@ -23,7 +23,7 @@ const ChatroomContainer = () => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [filteredChatrooms, setFilteredChatrooms] = useState([]);
 
-  const [currentUserId, setCurrentUserId] = useState(0);
+  const [currentUserId, setCurrentUserId] = useState(null);
   // Look into using useContext
 
   const fetchUsers = async () => {
@@ -168,7 +168,7 @@ const ChatroomContainer = () => {
     },
     {
       path: "/",
-      element: <Navigation />,
+      element: <Navigation setCurrentUserId={setCurrentUserId} />,
       children: [
         {
           path: "/messages",

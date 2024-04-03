@@ -1,5 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
-const Navigation = () => {
+const Navigation = ( {setCurrentUserId} ) => {
+
+const handleSignOut = (event) => {
+  setCurrentUserId(null);
+}
+
   return (
     <>
       <nav>
@@ -14,6 +19,10 @@ const Navigation = () => {
 
           <li>
             <Link to="/chatrooms">Chatrooms</Link>
+          </li>
+
+          <li>
+          <Link to="/login" onClick={handleSignOut}>Sign Out</Link>
           </li>
         </ul>
       </nav>

@@ -32,7 +32,7 @@ const UserSelectForm = ({setCurrentUserId, users}) => {
                 {userOptions}
             </select>
 
-            <input type="submit" value="log-in"/>
+            <input type="submit" value="Log in"/>
       </form>
             </>
   );
