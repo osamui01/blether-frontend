@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "../../styles/lists/SearchForm.css"
 
 const SearchForm = ({handleSearch}) => {
 
@@ -21,6 +22,7 @@ const SearchForm = ({handleSearch}) => {
 
     return (
         <>
+        <div className="searching">
         <form onSubmit={handleSubmit}>
         <input 
         type = "text"
@@ -30,6 +32,7 @@ const SearchForm = ({handleSearch}) => {
          ></input>
          <input type = "submit" />
          </form>
+         </div>
         </>
     )
 }
