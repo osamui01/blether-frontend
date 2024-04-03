@@ -158,7 +158,7 @@ const ChatroomContainer = () => {
             <>
               <NewUserForm postUser={postUser} />
               <SearchForm handleSearch={handleUsersSearch} />
-              <UserList users={users} deleteUser={deleteUser} />
+              <UserList users={filteredUsers} deleteUser={deleteUser} />
 
             </>
           ),
@@ -176,7 +176,7 @@ const ChatroomContainer = () => {
               <NewChatroomForm postChatroom={postChatroom} />
               <SearchForm handleSearch={handleChatroomsSearch} />
               <ChatroomList
-                chatrooms={chatrooms}
+                chatrooms={filteredChatrooms}
                 deleteChatroom={deleteChatroom}
               />
             </>
