@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, json, Outlet, RouterProvider } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import UserList from "../components/lists/UserList";
 import ChatroomList from "../components/lists/ChatroomList";
@@ -29,12 +29,14 @@ const ChatroomContainer = () => {
     const response = await fetch(`${API_ROOT}/users`);
     const jsonData = await response.json();
     setUsers(jsonData);
+    setFilteredUsers(jsonData);
   };
 
   const fetchChatrooms = async () => {
     const response = await fetch(`${API_ROOT}/chatrooms`);
     const jsonData = await response.json();
     setChatrooms(jsonData);
+    setFilteredChatrooms(jsonData);
   };
 
   // Will need to fetch messages for chatrooms later
@@ -133,8 +135,8 @@ const ChatroomContainer = () => {
   }
 
   const handleChatroomsSearch = (searchTerm) => {
-    const filterMessages = messages.filter((message) => message.content.toLowerCase().includes(searchTerm.toLowerCase()))
-    setMessages(filterMessages);
+    const filterChatrooms = chatrooms.filter((chatroom) => chatroom.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    setFilteredChatrooms(filterChatrooms);
   }
 
   const chatroomRoutes = createBrowserRouter([
