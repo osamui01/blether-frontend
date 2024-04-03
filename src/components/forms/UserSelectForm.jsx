@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "../../styles/UserSelectForm.css";
 
 const UserSelectForm = ({setCurrentUserId, users}) => {
 
@@ -20,13 +21,15 @@ const UserSelectForm = ({setCurrentUserId, users}) => {
 
   return (
     <>
+    <h4 >Select a User</h4>
+    <div className="select-user">
      <form onSubmit={handleLogin}>
-        <label htmlFor="user">Select a user </label>
             <select 
                 id="user" 
                 name="userId"
                 defaultValue="select-user"
                 onChange={handleChange}
+                
             >
                 <option disabled value="select-user">Choose a user</option>
                 {userOptions}
@@ -34,6 +37,7 @@ const UserSelectForm = ({setCurrentUserId, users}) => {
 
             <input type="submit" value="Log in"/>
       </form>
+      </div>
             </>
   );
 
