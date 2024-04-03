@@ -1,9 +1,7 @@
-import { Link, Outlet } from "react-router-dom";
+
 
 const User = ({ user, deleteUser }) => {
-  const handleUserDelete = () => {
-    deleteUser(user.id);
-  };
+  
 
   return (
     <>

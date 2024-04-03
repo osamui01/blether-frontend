@@ -10,7 +10,7 @@ const handleSignOut = (event) => {
       <nav>
         <ul>
           <li>
-            <Link to="/messages">Messages</Link>
+            <Link to="/profile">My Profile Page</Link>
           </li>
 
           <li>
