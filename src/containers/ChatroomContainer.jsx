@@ -6,6 +6,7 @@ import ChatroomList from "../components/lists/ChatroomList";
 import NewUserForm from "../components/forms/NewUserForm";
 import NewChatroomForm from "../components/forms/NewChatroomForm";
 import UserSelectForm from "../components/forms/UserSelectForm";
+import SearchForm from "../components/forms/SearchForm";
 
 // import UserSelectForm from "../components/forms/UserSelectForm";
 import MessageList from "../components/lists/MessageList";
@@ -18,6 +19,9 @@ const ChatroomContainer = () => {
   const [users, setUsers] = useState([]);
   const [chatrooms, setChatrooms] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [filteredMessages, setFilteredMessages] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filteredChatrooms, setFilteredChatrooms] = useState([]);
 
   const [currentUserId, setCurrentUserId] = useState(0);
   // Look into using useContext
@@ -26,12 +30,14 @@ const ChatroomContainer = () => {
     const response = await fetch(`${API_ROOT}/users`);
     const jsonData = await response.json();
     setUsers(jsonData);
+    setFilteredUsers(jsonData);
   };
 
   const fetchChatrooms = async () => {
     const response = await fetch(`${API_ROOT}/chatrooms`);
     const jsonData = await response.json();
     setChatrooms(jsonData);
+    setFilteredChatrooms(jsonData);
   };
 
   // Will need to fetch messages for chatrooms later
@@ -39,6 +45,7 @@ const ChatroomContainer = () => {
     const response = await fetch(`${API_ROOT}/messages`);
     const jsonData = await response.json();
     setMessages(jsonData);
+    setFilteredMessages(jsonData);
   };
 
   const fetchMessagesForUser = async (id) => {
@@ -132,6 +139,22 @@ const ChatroomContainer = () => {
     return chatrooms.find((chatroom) => chatroom.id === parseInt(params.id));
   }
 
+  //Searching for messages
+  const handleMessagesSearch = (searchTerm) => {
+    const filterMessages = messages.filter((message) => message.content.toLowerCase().includes(searchTerm.toLowerCase()))
+    setFilteredMessages(filterMessages);
+  }
+
+  const handleUsersSearch = (searchTerm) => {
+    const filterUsers = users.filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    setFilteredUsers(filterUsers);
+  }
+
+  const handleChatroomsSearch = (searchTerm) => {
+    const filterChatrooms = chatrooms.filter((chatroom) => chatroom.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    setFilteredChatrooms(filterChatrooms);
+  }
+
   const chatroomRoutes = createBrowserRouter([
     {
       path: "/",
@@ -142,7 +165,8 @@ const ChatroomContainer = () => {
           element: (
             <>
               <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
-              <MessageList messages={messages} deleteMessage={deleteMessage} />
+              <SearchForm handleSearch={handleMessagesSearch} />
+              <MessageList messages={filteredMessages} deleteMessage={deleteMessage} />
             </>
           ),
         },
@@ -151,7 +175,8 @@ const ChatroomContainer = () => {
           element: (
             <>
               <NewUserForm postUser={postUser} />
-              <UserList users={users} deleteUser={deleteUser} />
+              <SearchForm handleSearch={handleUsersSearch} />
+              <UserList users={filteredUsers} deleteUser={deleteUser} />
 
             </>
           ),
@@ -167,8 +192,9 @@ const ChatroomContainer = () => {
             <>
               <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <NewChatroomForm postChatroom={postChatroom} />
+              <SearchForm handleSearch={handleChatroomsSearch} />
               <ChatroomList
-                chatrooms={chatrooms}
+                chatrooms={filteredChatrooms}
                 deleteChatroom={deleteChatroom}
               />
             </>
