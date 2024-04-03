@@ -9,6 +9,7 @@ const handleSignOut = (event) => {
 
   return (
     <>
+    <div className="navDiv">
       <nav>
         <ul>
           <li>
@@ -28,6 +29,7 @@ const handleSignOut = (event) => {
           </li>
         </ul>
       </nav>
+      </div>
 
       <Outlet />
     </>
