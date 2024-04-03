@@ -157,6 +157,15 @@ const ChatroomContainer = () => {
 
   const chatroomRoutes = createBrowserRouter([
     {
+      path: "/login",
+      element: (
+      <>
+        <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
+        <NewUserForm postUser={postUser}/>
+      </>
+      )
+    },
+    {
       path: "/",
       element: <Navigation />,
       children: [
@@ -164,7 +173,6 @@ const ChatroomContainer = () => {
           path: "/messages",
           element: (
             <>
-              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <SearchForm handleSearch={handleMessagesSearch} />
               <MessageList messages={filteredMessages} deleteMessage={deleteMessage} />
             </>
@@ -174,7 +182,6 @@ const ChatroomContainer = () => {
           path: "/users",
           element: (
             <>
-              <NewUserForm postUser={postUser} />
               <SearchForm handleSearch={handleUsersSearch} />
               <UserList users={filteredUsers} deleteUser={deleteUser} />
 
