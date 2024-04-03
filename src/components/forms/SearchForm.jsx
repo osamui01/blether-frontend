@@ -1,11 +1,13 @@
 import { useState } from "react"
-const SearchForm = () => {
+
+const SearchForm = ({handleSearch}) => {
 
     const [searchInput, setSearchInput] = useState("")
 
     const handleInputChange = (event) => {
         const searchItem = event.target.value;
         setSearchInput(searchItem);
+        handleSearch(searchInput);
     }
 
 
@@ -21,3 +23,5 @@ const SearchForm = () => {
         </>
     )
 }
+
+export default SearchForm;
