@@ -1,7 +1,15 @@
+.chatroom-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
 .chatroom {
   width: 100%;
   display: flex;
   align-content: center;
+  justify-content: center;
 }
 
 .chatroom-grid {
@@ -10,10 +18,69 @@
   grid-template-rows: auto;
   gap: 20px;
   align-content: center;
+  justify-content: center;
 }
 
 .chatroom-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  text-align: center;
+
   border: 2px solid black;
+  border-radius: 25px;
   height: 30em;
   width: 30em;
+}
+
+.chatroom-items p {
+  height: 5rem;
+  align-content: center;
+}
+
+.chatroom-name {
+  grid-column-start: 2;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.chatroom-age {
+  grid-column-start: 2;
+}
+
+.chatroom-cap {
+  grid-column-start: 1;
+}
+
+.chatroom-delete {
+  grid-column-start: 2;
+}
+
+.chatroom-edit {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.chatroom-items a,
+.chatroom-items button {
+  height: 2rem;
+  align-content: center;
+}
+
+.chatroom-items a:hover {
+  text-decoration: underline;
+}
+
+.chatroom-items button {
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.chatroom-items button:hover {
+  /* change once color theme is established */
+  background-color: #f9b8b8;
+  color: red;
 }
