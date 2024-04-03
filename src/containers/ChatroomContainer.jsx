@@ -12,6 +12,9 @@ import SearchForm from "../components/forms/SearchForm";
 import MessageList from "../components/lists/MessageList";
 import EditUserForm from "../components/forms/EditUserForm";
 import EditChatroomForm from "../components/forms/EditChatroom";
+import ChatroomNavigation from "../components/ChatroomNavigation";
+import ChatroomMessageList from "../components/lists/ChatroomMessageList";
+import NewMessageForm from "../components/forms/NewMessageForm";
 
 const API_ROOT = "http://localhost:8080";
 
@@ -236,6 +239,14 @@ const ChatroomContainer = () => {
           loader: chatroomLoader,
           element: <EditChatroomForm updateChatroom={updateChatroom} />,
         },
+        {
+          path: "/chatrooms/:id",
+          element: <>
+            <ChatroomNavigation />
+            <ChatroomMessageList />
+            <NewMessageForm />
+          </>
+        }
       ],
     },
   ]);
