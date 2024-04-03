@@ -53,7 +53,6 @@ const ChatroomContainer = () => {
     const jsonData = await response.json();
     setMessages(jsonData);
     setFilteredMessages(jsonData);
-
   }; 
 
   // add functionality to fetch messages for specific users later
@@ -245,8 +244,14 @@ const ChatroomContainer = () => {
 
     fetchUsers();
     fetchChatrooms();
-    // fetchUserMessages();
+    
   }, []);
+
+  useEffect(()=> {
+    if (currentUserId) {
+      fetchUserMessages(currentUserId);
+    }
+  }, [currentUserId])
 
   return (
     <>
