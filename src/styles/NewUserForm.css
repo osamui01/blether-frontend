@@ -1,0 +1,38 @@
+h4 {
+    height: 2em;
+    margin: 1em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.new-user-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.new-user-form form input[type="text"],
+.new-user-form form input[type="date"],
+.new-user-form form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.new-user-form form input[type="submit"] {
+    cursor: pointer;
+}
+
+.new-user-form form input[type="submit"]:hover {
+    background-color: grey;
+}
+
+.new-user-form form input[type="text"]:focus,
+.new-user-form form input[type="date"]:focus {
+    outline: none;
+    border-color: red;
+}

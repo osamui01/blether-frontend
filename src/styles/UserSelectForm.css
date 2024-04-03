@@ -1,0 +1,42 @@
+h4 {
+    height: 2em;
+    margin: 1em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.select-user {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.select-user form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.select-user form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.select-user form input[type="submit"]:hover {
+    background-color: grey;
+}
+
+.select-user form select:focus {
+    outline: none;
+    border-color: red;
+}
