@@ -1,0 +1,27 @@
+nav {
+    background-color: rgb(247, 178, 50);
+    border: 1px solid red;
+    margin: 2em;
+}
+
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 2em;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+li:hover{
+    border: 1px black solid;
+}
