@@ -27,36 +27,38 @@ const NewUserForm = ({ postUser, setCurrentUserId }) => {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
-        <h4>Add New User</h4>
+    <h4>Add New User</h4>
+      <div className="new-user-form">
+        <form onSubmit={handleFormSubmit}>
+        
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
+          />
 
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          required
-        />
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
+          />
 
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          required
-        />
+          <input
+            type="date"
+            placeholder="Date of Birth"
+            value={dateOfBirth}
+            onChange={(event) => setDateOfBirth(event.target.value)}
+            required
+            // Must be in "1980-03-06" format - add to form validation
+          />
 
-        <input
-          type="date"
-          placeholder="Date of Birth"
-          value={dateOfBirth}
-          onChange={(event) => setDateOfBirth(event.target.value)}
-          required
-          // Must be in "1980-03-06" format - add to form validation
-        />
-
-        <input type="submit" value="Sign Up" />
-      </form>
+          <input type="submit" value="Sign Up" />
+        </form>
+      </div>
     </>
   );
 };
