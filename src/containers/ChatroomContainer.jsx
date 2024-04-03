@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { createBrowserRouter, json, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import UserList from "../components/lists/UserList";
 import ChatroomList from "../components/lists/ChatroomList";
@@ -11,6 +11,7 @@ import SearchForm from "../components/forms/SearchForm";
 // import UserSelectForm from "../components/forms/UserSelectForm";
 import MessageList from "../components/lists/MessageList";
 import EditUserForm from "../components/forms/EditUserForm";
+import EditChatroomForm from "../components/forms/EditChatroom";
 
 const API_ROOT = "http://localhost:8080";
 
@@ -53,6 +54,8 @@ const ChatroomContainer = () => {
     setMessages(jsonData);
   };
 
+
+
   // const postMessage = async (newUserMessage) => {
   //   const response = await fetch(`${API_ROOT}/messages/user`, {
   //     method: "POST",
@@ -82,7 +85,6 @@ const ChatroomContainer = () => {
   };
 
   const updateUser = async (user) => {
-    console.log(user);
     await fetch(`${API_ROOT}/users/${user.id}`, {
       method: "PATCH",
       headers: {
@@ -118,9 +120,23 @@ const ChatroomContainer = () => {
     });
     setChatrooms(chatrooms.filter((chatroom) => chatroom.id !== id));
   };
+  
+  const updateChatroom = async (chatroom) => {
+    await fetch(`${API_ROOT}/chatrooms/${chatroom.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json" 
+      },
+      body: JSON.stringify(chatroom)
+    });
+    await fetchChatrooms();
+  }
 
   const userLoader = ({params}) => {
     return users.find((user) => user.id === parseInt(params.id));
+  }
+  const chatroomLoader = ({params}) => {
+    return chatrooms.find((chatroom) => chatroom.id === parseInt(params.id));
   }
 
   //Searching for messages
@@ -183,6 +199,11 @@ const ChatroomContainer = () => {
               />
             </>
           ),
+        },
+        {
+          path: "/chatrooms/:id/edit",
+          loader: chatroomLoader,
+          element: (<EditChatroomForm updateChatroom={updateChatroom}/>)
         },
       ],
     },
