@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const NewUserForm = ({ postUser }) => {
+const NewUserForm = ({ postUser, setCurrentUserId }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
 
-  const handleFormSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     const newUser = {
@@ -13,11 +16,12 @@ const NewUserForm = ({ postUser }) => {
       email,
       dateOfBirth,
     };
-
-    postUser(newUser);
+    const savedUser = await postUser(newUser);
     setName("");
     setEmail("");
     setDateOfBirth("");
+    setCurrentUserId(savedUser.id)
+    navigate(`/chatrooms`);
   };
 
   return (
@@ -50,7 +54,7 @@ const NewUserForm = ({ postUser }) => {
           // Must be in "1980-03-06" format - add to form validation
         />
 
-        <input type="submit" value="Add User" />
+        <input type="submit" value="Sign Up" />
       </form>
     </>
   );

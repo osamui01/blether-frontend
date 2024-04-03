@@ -23,7 +23,7 @@ const ChatroomContainer = () => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [filteredChatrooms, setFilteredChatrooms] = useState([]);
 
-  const [currentUserId, setCurrentUserId] = useState(0);
+  const [currentUserId, setCurrentUserId] = useState(null);
   // Look into using useContext
 
   const fetchUsers = async () => {
@@ -82,6 +82,7 @@ const ChatroomContainer = () => {
     });
     const savedUser = await response.json();
     setUsers([...users, savedUser]);
+    return savedUser;
   };
 
   const updateUser = async (user) => {
@@ -157,14 +158,22 @@ const ChatroomContainer = () => {
 
   const chatroomRoutes = createBrowserRouter([
     {
+      path: "/login",
+      element: (
+      <>
+        <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
+        <NewUserForm postUser={postUser} setCurrentUserId={setCurrentUserId}/>
+      </>
+      )
+    },
+    {
       path: "/",
-      element: <Navigation />,
+      element: <Navigation setCurrentUserId={setCurrentUserId} />,
       children: [
         {
           path: "/messages",
           element: (
             <>
-              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <SearchForm handleSearch={handleMessagesSearch} />
               <MessageList messages={filteredMessages} deleteMessage={deleteMessage} />
             </>
@@ -174,7 +183,6 @@ const ChatroomContainer = () => {
           path: "/users",
           element: (
             <>
-              <NewUserForm postUser={postUser} />
               <SearchForm handleSearch={handleUsersSearch} />
               <UserList users={filteredUsers} deleteUser={deleteUser} />
 
@@ -190,7 +198,6 @@ const ChatroomContainer = () => {
           path: "/chatrooms",
           element: (
             <>
-              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <NewChatroomForm postChatroom={postChatroom} />
               <SearchForm handleSearch={handleChatroomsSearch} />
               <ChatroomList
