@@ -29,7 +29,7 @@ const SearchForm = ({handleSearch}) => {
         onChange={handleInputChange}
         placeholder="Search..."
          ></input>
-         <input type = "submit" />
+         <input className = "submitButton" type = "submit" />
          </form>
         </>
     )
