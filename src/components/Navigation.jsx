@@ -1,4 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
+import "../styles/lists/Navigation.css"
+
 const Navigation = ( {setCurrentUserId} ) => {
 
 const handleSignOut = (event) => {
