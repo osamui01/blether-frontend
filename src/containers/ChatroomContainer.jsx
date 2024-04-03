@@ -82,6 +82,7 @@ const ChatroomContainer = () => {
     });
     const savedUser = await response.json();
     setUsers([...users, savedUser]);
+    return savedUser;
   };
 
   const updateUser = async (user) => {
@@ -161,7 +162,7 @@ const ChatroomContainer = () => {
       element: (
       <>
         <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
-        <NewUserForm postUser={postUser}/>
+        <NewUserForm postUser={postUser} setCurrentUserId={setCurrentUserId}/>
       </>
       )
     },
@@ -197,7 +198,6 @@ const ChatroomContainer = () => {
           path: "/chatrooms",
           element: (
             <>
-              <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
               <NewChatroomForm postChatroom={postChatroom} />
               <SearchForm handleSearch={handleChatroomsSearch} />
               <ChatroomList
