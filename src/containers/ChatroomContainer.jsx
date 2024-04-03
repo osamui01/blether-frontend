@@ -41,18 +41,19 @@ const ChatroomContainer = () => {
   };
 
   // Will need to fetch messages for chatrooms later
-  const fetchMessages = async () => {
-    const response = await fetch(`${API_ROOT}/messages`);
+  // const fetchMessages = async () => {
+  //   const response = await fetch(`${API_ROOT}/messages`);
+  //   const jsonData = await response.json();
+  //   setMessages(jsonData);
+  //   setFilteredMessages(jsonData);
+  // }; --> for later
+
+  const fetchUserMessages = async (id) => {
+    const response = await fetch(`${API_ROOT}/messages/user/` + id);
     const jsonData = await response.json();
     setMessages(jsonData);
     setFilteredMessages(jsonData);
-  };
-
-  // const fetchMessagesForUser = async (id) => {
-  //   const response = await fetch(`${API_ROOT}/messages/user/` + id);
-  //   const jsonData = await response.json();
-    
-  // }; 
+  }; 
   // add functionality to fetch messages for specific users later
 
   // const postMessage = async (newUserMessage) => {
@@ -228,14 +229,14 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-
+      fetchUserMessages();
       // fetchMessagesForUser(currentUserId);
   }, [currentUserId]);
 
   useEffect(() => {
     fetchUsers();
     fetchChatrooms();
-    fetchMessages();
+    // fetchUserMessages();
   }, []);
 
   return (
