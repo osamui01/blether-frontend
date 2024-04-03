@@ -14,8 +14,8 @@ const MessageList = ({ messages, deleteMessage }) => {
 
   return (
     <>
-    <div className="message-grid">
-      <h3>User Messages</h3>
+    <h2>User Messages</h2>
+    <div className="message-column">
       {messageComponents}
       </div>
     </>
