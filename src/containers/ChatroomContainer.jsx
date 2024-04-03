@@ -55,8 +55,6 @@ const ChatroomContainer = () => {
   // }; 
   // add functionality to fetch messages for specific users later
 
-
-
   // const postMessage = async (newUserMessage) => {
   //   const response = await fetch(`${API_ROOT}/messages/user`, {
   //     method: "POST",
@@ -90,12 +88,12 @@ const ChatroomContainer = () => {
     await fetch(`${API_ROOT}/users/${user.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json" 
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
     await fetchUsers();
-  }
+  };
 
   const deleteUser = async (id) => {
     await fetch(`${API_ROOT}/users/` + id, {
@@ -122,50 +120,61 @@ const ChatroomContainer = () => {
     });
     setChatrooms(chatrooms.filter((chatroom) => chatroom.id !== id));
   };
-  
+
   const updateChatroom = async (chatroom) => {
     await fetch(`${API_ROOT}/chatrooms/${chatroom.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json" 
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(chatroom)
+      body: JSON.stringify(chatroom),
     });
     await fetchChatrooms();
-  }
+  };
+
 
   const getCurrentUser = () => {
     return users.find((user) => user.id === parseInt(currentUserId));
   }
   const chatroomLoader = ({params}) => {
+
     return chatrooms.find((chatroom) => chatroom.id === parseInt(params.id));
-  }
+  };
 
   //Searching for messages
   const handleMessagesSearch = (searchTerm) => {
-    const filterMessages = messages.filter((message) => message.content.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filterMessages = messages.filter((message) =>
+      message.content.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     setFilteredMessages(filterMessages);
-  }
+  };
 
   const handleUsersSearch = (searchTerm) => {
-    const filterUsers = users.filter((user) => user.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filterUsers = users.filter((user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     setFilteredUsers(filterUsers);
-  }
+  };
 
   const handleChatroomsSearch = (searchTerm) => {
-    const filterChatrooms = chatrooms.filter((chatroom) => chatroom.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filterChatrooms = chatrooms.filter((chatroom) =>
+      chatroom.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     setFilteredChatrooms(filterChatrooms);
-  }
+  };
 
   const chatroomRoutes = createBrowserRouter([
     {
       path: "/login",
       element: (
-      <>
-        <UserSelectForm users={users} setCurrentUserId={setCurrentUserId}/>
-        <NewUserForm postUser={postUser} setCurrentUserId={setCurrentUserId}/>
-      </>
-      )
+        <>
+          <UserSelectForm users={users} setCurrentUserId={setCurrentUserId} />
+          <NewUserForm
+            postUser={postUser}
+            setCurrentUserId={setCurrentUserId}
+          />
+        </>
+      ),
     },
     {
       path: "/",
@@ -177,7 +186,10 @@ const ChatroomContainer = () => {
             <>
               <EditUserForm updateUser={updateUser} deleteUser={deleteUser} getCurrentUser={getCurrentUser}/>
               <SearchForm handleSearch={handleMessagesSearch} />
-              <MessageList messages={filteredMessages} deleteMessage={deleteMessage} />
+              <MessageList
+                messages={filteredMessages}
+                deleteMessage={deleteMessage}
+              />
             </>
           ),
         },
@@ -186,6 +198,7 @@ const ChatroomContainer = () => {
           element: (
             <>
               <SearchForm handleSearch={handleUsersSearch} />
+
               <UserList users={filteredUsers} />
 
             </>
@@ -195,26 +208,27 @@ const ChatroomContainer = () => {
         {
           path: "/chatrooms",
           element: (
-            <>
+            <section className="chatroom-elements">
               <NewChatroomForm postChatroom={postChatroom} />
               <SearchForm handleSearch={handleChatroomsSearch} />
               <ChatroomList
                 chatrooms={filteredChatrooms}
                 deleteChatroom={deleteChatroom}
               />
-            </>
+            </section>
           ),
         },
         {
           path: "/chatrooms/:id/edit",
           loader: chatroomLoader,
-          element: (<EditChatroomForm updateChatroom={updateChatroom}/>)
+          element: <EditChatroomForm updateChatroom={updateChatroom} />,
         },
       ],
     },
   ]);
 
   useEffect(() => {
+
       // fetchMessagesForUser(currentUserId);
   }, [currentUserId]);
 

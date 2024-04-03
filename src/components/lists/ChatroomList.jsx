@@ -14,10 +14,8 @@ const ChatroomList = ({ chatrooms, deleteChatroom }) => {
   });
   return (
     <>
-      <div className="chatroom-grid">
-        <h3>Chatroom List</h3>
-        {chatroomComponents}
-      </div>
+      <h3>Chatroom List</h3>
+      <div className="chatroom-grid">{chatroomComponents}</div>
     </>
   );
 };
