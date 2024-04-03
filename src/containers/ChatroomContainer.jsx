@@ -53,7 +53,9 @@ const ChatroomContainer = () => {
     const jsonData = await response.json();
     setMessages(jsonData);
     setFilteredMessages(jsonData);
+
   }; 
+
   // add functionality to fetch messages for specific users later
 
   // const postMessage = async (newUserMessage) => {
@@ -133,12 +135,10 @@ const ChatroomContainer = () => {
     await fetchChatrooms();
   };
 
-
   const getCurrentUser = () => {
     return users.find((user) => user.id === parseInt(currentUserId));
-  }
-  const chatroomLoader = ({params}) => {
-
+  };
+  const chatroomLoader = ({ params }) => {
     return chatrooms.find((chatroom) => chatroom.id === parseInt(params.id));
   };
 
@@ -179,13 +179,27 @@ const ChatroomContainer = () => {
     },
     {
       path: "/",
-      element: <Navigation setCurrentUserId={setCurrentUserId} />,
+      element: currentUserId ? (
+        <Navigation setCurrentUserId={setCurrentUserId} />
+      ) : (
+        <>
+          <UserSelectForm users={users} setCurrentUserId={setCurrentUserId} />
+          <NewUserForm
+            postUser={postUser}
+            setCurrentUserId={setCurrentUserId}
+          />
+        </>
+      ),
       children: [
         {
           path: "/messages",
           element: (
             <>
-              <EditUserForm updateUser={updateUser} deleteUser={deleteUser} getCurrentUser={getCurrentUser}/>
+              <EditUserForm
+                updateUser={updateUser}
+                deleteUser={deleteUser}
+                getCurrentUser={getCurrentUser}
+              />
               <SearchForm handleSearch={handleMessagesSearch} />
               <MessageList
                 messages={filteredMessages}
@@ -201,11 +215,10 @@ const ChatroomContainer = () => {
               <SearchForm handleSearch={handleUsersSearch} />
 
               <UserList users={filteredUsers} />
-
             </>
           ),
         },
-        
+
         {
           path: "/chatrooms",
           element: (
@@ -229,11 +242,7 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-      fetchUserMessages();
-      // fetchMessagesForUser(currentUserId);
-  }, [currentUserId]);
 
-  useEffect(() => {
     fetchUsers();
     fetchChatrooms();
     // fetchUserMessages();
@@ -242,7 +251,6 @@ const ChatroomContainer = () => {
   return (
     <>
       <h1>Big Blether</h1>
-
       <RouterProvider router={chatroomRoutes} />
     </>
   );
