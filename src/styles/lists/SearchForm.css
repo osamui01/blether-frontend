@@ -1,0 +1,31 @@
+ /* --Search bar */
+.searching {
+    padding-left: 2em;
+    margin-top: 2px;
+}
+
+/* Search bar box */
+.searchBox {
+    text-align: left;
+    text-indent: 10px;
+    border: black solid 1px;
+    border-radius: 10px;
+    margin: 3px;
+    width: 12em;
+    height: 3em;
+}
+
+/* Submit button */
+.submitButton {
+    border: black solid 1px;
+    border-radius: 10px;
+    margin: 3px;
+    width: 5em;
+    height: 3em;
+}
+
+/* Submit button when hovered on */
+.submitButton:hover {
+    background-color: grey;
+}
+

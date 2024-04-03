@@ -1,9 +1,10 @@
 import Message from "../Message";
+import "../../styles/lists/MessageList.css"
 
 const MessageList = ({ messages, deleteMessage }) => {
   const messageComponents = messages.map((message) => {
     return (
-      <Message
+      <Message className = "message"
         key={message.id}
         message={message}
         deleteMessage={deleteMessage}
@@ -13,8 +14,10 @@ const MessageList = ({ messages, deleteMessage }) => {
 
   return (
     <>
-      <h3>User Messages</h3>
+    <h2>User Messages</h2>
+    <div className="message-column">
       {messageComponents}
+      </div>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "../../styles/lists/SearchForm.css"
 
 const SearchForm = ({handleSearch}) => {
 
@@ -21,14 +22,14 @@ const SearchForm = ({handleSearch}) => {
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
-        <input 
+        <form className= "searching" onSubmit={handleSubmit}>
+        <input className = "searchBox"
         type = "text"
         value = {searchInput}
         onChange={handleInputChange}
         placeholder="Search..."
          ></input>
-         <input type = "submit" />
+         <input className = "submitButton" type = "submit" />
          </form>
         </>
     )

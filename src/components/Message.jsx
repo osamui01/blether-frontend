@@ -5,9 +5,10 @@ const Message = ({ message, deleteMessage }) => {
 
   return (
     <>
+    <div className="message-items">
       <p>{message.content}</p>
       <button onClick={handleMessageDelete}>Delete</button>
-      <hr />
+    </div>
     </>
   );
 };

@@ -1,4 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
+import "../styles/lists/Navigation.css"
+
 const Navigation = ( {setCurrentUserId} ) => {
 
 const handleSignOut = (event) => {
@@ -7,6 +9,7 @@ const handleSignOut = (event) => {
 
   return (
     <>
+    <div className="navDiv">
       <nav>
         <ul>
           <li>
@@ -26,6 +29,7 @@ const handleSignOut = (event) => {
           </li>
         </ul>
       </nav>
+      </div>
 
       <Outlet />
     </>
