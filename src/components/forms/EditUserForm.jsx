@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const EditUserForm = ({ getCurrentUser,updateUser, deleteUser}) => {
     const user = getCurrentUser();
-    
+    const navigate = useNavigate();
 
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
@@ -12,6 +13,7 @@ const EditUserForm = ({ getCurrentUser,updateUser, deleteUser}) => {
     
     const handleUserDelete = () => {
         deleteUser(user.id);
+        navigate("/login");
       };
 
 
