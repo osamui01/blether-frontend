@@ -1,0 +1,45 @@
+/*
+Inside of MessageList.jsx
+const messageComponents = messages.map((message) => {
+    return (
+      <Message className = "message"
+        key={message.id}
+        message={message}
+        deleteMessage={deleteMessage}
+*/
+.message {
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/*
+Inside of MessageList.jsx
+<h3>User Messages</h3>
+      {messageComponents}
+*/
+.message-grid {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    gap: 20px;
+    align-content: center;
+}
+
+/*
+Inside of Message.jsx
+<p>{message.content}</p>
+      <button onClick={handleMessageDelete}>Delete</button>
+*/
+.message-items {
+    border: 2px solid black;
+    border-radius: 20px;
+    height: 20em;
+    width: 20em;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    align-content: center;
+  }
