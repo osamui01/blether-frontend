@@ -1,0 +1,19 @@
+.chatroom {
+  width: 100%;
+  display: flex;
+  align-content: center;
+}
+
+.chatroom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  align-content: center;
+}
+
+.chatroom-items {
+  border: 2px solid black;
+  height: 30em;
+  width: 30em;
+}
