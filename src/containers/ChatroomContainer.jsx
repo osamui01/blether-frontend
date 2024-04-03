@@ -48,11 +48,12 @@ const ChatroomContainer = () => {
     setFilteredMessages(jsonData);
   };
 
-  const fetchMessagesForUser = async (id) => {
-    const response = await fetch(`${API_ROOT}/messages/user/` + id);
-    const jsonData = await response.json();
-    setMessages(jsonData);
-  };
+  // const fetchMessagesForUser = async (id) => {
+  //   const response = await fetch(`${API_ROOT}/messages/user/` + id);
+  //   const jsonData = await response.json();
+    
+  // }; 
+  // add functionality to fetch messages for specific users later
 
 
 
@@ -133,8 +134,8 @@ const ChatroomContainer = () => {
     await fetchChatrooms();
   }
 
-  const userLoader = ({params}) => {
-    return users.find((user) => user.id === parseInt(params.id));
+  const getCurrentUser = () => {
+    return users.find((user) => user.id === parseInt(currentUserId));
   }
   const chatroomLoader = ({params}) => {
     return chatrooms.find((chatroom) => chatroom.id === parseInt(params.id));
@@ -174,6 +175,7 @@ const ChatroomContainer = () => {
           path: "/messages",
           element: (
             <>
+              <EditUserForm updateUser={updateUser} deleteUser={deleteUser} getCurrentUser={getCurrentUser}/>
               <SearchForm handleSearch={handleMessagesSearch} />
               <MessageList messages={filteredMessages} deleteMessage={deleteMessage} />
             </>
@@ -184,16 +186,12 @@ const ChatroomContainer = () => {
           element: (
             <>
               <SearchForm handleSearch={handleUsersSearch} />
-              <UserList users={filteredUsers} deleteUser={deleteUser} />
+              <UserList users={filteredUsers} />
 
             </>
           ),
         },
-        {
-          path: "/users/:id/edit",
-          loader: userLoader,
-          element: (<EditUserForm updateUser={updateUser}/>)
-        },
+        
         {
           path: "/chatrooms",
           element: (
@@ -217,7 +215,7 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-      fetchMessagesForUser(currentUserId);
+      // fetchMessagesForUser(currentUserId);
   }, [currentUserId]);
 
   useEffect(() => {
