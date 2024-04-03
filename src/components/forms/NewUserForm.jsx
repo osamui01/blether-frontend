@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/NewUserForm.css";
 
 const NewUserForm = ({ postUser, setCurrentUserId }) => {
   const [name, setName] = useState("");
