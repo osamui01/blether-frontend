@@ -166,6 +166,10 @@ const ChatroomContainer = () => {
     return chatrooms.find((chatroom) => chatroom.id === parseInt(params.id));
   };
 
+  const getCurrentChatroom = () => {
+    return chatrooms.find((chatroom) => chatroom.id === parseInt(currentChatroomId));
+  }
+
   //Searching for messages
   const handleMessagesSearch = (searchTerm) => {
     const filterMessages = messages.filter((message) =>
@@ -263,27 +267,28 @@ const ChatroomContainer = () => {
           loader: chatroomLoader,
           element: <EditChatroomForm updateChatroom={updateChatroom} />,
         },
-        {
-          path: "/chatrooms/:id",
-          element: (
-            <>
-              <ChatroomNavigation />
-              <ChatroomMessageList 
-              chatroomMessages={chatroomMessages}
-              deleteMessage={ deleteMessage}
-              
-              />
-              <NewMessageForm 
-              postMessage={postMessage}
-              currentUserId={currentUserId}
-              currentChatroomId={currentChatroomId}
-              />
-            </>
-          ),
-        },
       ],
     },
+    {
+      path: "/chatrooms/:id",
+      element: (
+        <>
+          <ChatroomNavigation getCurrentChatroom={getCurrentChatroom}/>
+          <ChatroomMessageList 
+          chatroomMessages={chatroomMessages}
+          deleteMessage={ deleteMessage}
+          
+          />
+          <NewMessageForm 
+          postMessage={postMessage}
+          currentUserId={currentUserId}
+          currentChatroomId={currentChatroomId}
+          />
+        </>
+      ),
+    },
   ]);
+
 
   useEffect(() => {
     fetchUsers();
