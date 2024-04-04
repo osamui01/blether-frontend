@@ -104,4 +104,4 @@ Give credit to the contributors of the project:
 | A | 🦧 | Aebel   | https://github.com/Aebel-Shajan |
 | R |    | Ralph   | https://github.com/osamui01     |
 | Y |    | Yessica | https://github.com/ney601       |
-| T |    | Tommy   | https://github.com/Tommybui28   |
+| T | 🎋 | Tommy   | https://github.com/Tommybui28   |
