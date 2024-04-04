@@ -33,6 +33,7 @@ h3 {
     cursor: pointer;
     margin-bottom: 2em;
     text-align: center;
+    background-color: #CBF3F0;
 }
 
 .user-items button:hover {

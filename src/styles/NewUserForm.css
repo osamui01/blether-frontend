@@ -11,6 +11,7 @@ h4 {
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
+    background-color: #ffddb0;
 }
 
 .new-user-form form input[type="text"],

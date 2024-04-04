@@ -14,9 +14,11 @@
 .edit-chatroom {
     max-width: 400px;
     margin: 10px auto;
+    margin-top: 5rem;
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
+    background-color: #ffddb0;
 }
 
 .edit-chatroom h5 {

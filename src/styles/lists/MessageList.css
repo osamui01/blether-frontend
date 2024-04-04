@@ -7,10 +7,7 @@ const messageComponents = messages.map((message) => {
         message={message}
         deleteMessage={deleteMessage}
 */
-.message {
-    width: 100%;
 
-}
 
 /*
 Inside of MessageList.jsx
@@ -18,10 +15,12 @@ Inside of MessageList.jsx
       {messageComponents}
 */
 .message-column {
-    width: 200em;
-    align-content: center;
-    margin: 0 auto;
-    max-width: 1300px;
+    height: 35vh;
+    overflow-y: scroll;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 /*
@@ -32,13 +31,13 @@ Inside of Message.jsx
 .message-items {
     border: 2px solid black;
     border-radius: 20px;
-    height: 5em;
-    width: 40em;
-    margin-left: 2em;
-    font-size: 30px;
-    align-content: center;
-    margin-bottom: 2em;
-    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    height: 5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1rem;
+    background-color: #CBF3F0;
   }
 
   /* Header "User Messages" */
@@ -50,13 +49,11 @@ Inside of Message.jsx
 
   /* Delete button */
   .delete-message{
-    width: calc(15% - 5px);
-    height: calc(30% - 5px);
+    height: 100%;
     padding: 10px;
     border: 1px solid grey;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 1em;
   }
 
   /* Delete message button onHover*/

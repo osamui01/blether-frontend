@@ -1,6 +1,6 @@
 nav {
-    background-color: rgb(247, 178, 50);
-    border: 1px solid red;
+    background-color: #FFBF69;
+    border: 1px solid #FF9F1C;
     width: 50vw;
     border-radius: 10px;
 }
@@ -32,8 +32,7 @@ li {
 
 
 li:hover{
-    border: 1px black solid;
-    background-color: orange;
+    background-color: #FF9F1C;
 }
 
 li a{
