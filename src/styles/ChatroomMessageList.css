@@ -5,3 +5,10 @@ h3 {
     margin-bottom: 1em;
 }
 
+/* Individual chatroom messages */
+.chatroom-messages {
+    width: 200em;
+    align-content: center;
+    margin: 0 auto;
+    max-width: 1300px;
+}
