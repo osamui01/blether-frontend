@@ -32,6 +32,7 @@ h3 {
     background-color: grey;
 }
 
+/* Alerts if field not filled */
 .new-chatroom-form form input[type="text"]:focus,
 .new-chatroom-form form input[type ="number"]:focus {
     outline: none;

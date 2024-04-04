@@ -7,7 +7,7 @@ const Message = ({ message, deleteMessage }) => {
     <>
     <div className="message-items">
       <p>{message.content}</p>
-      <button onClick={handleMessageDelete}>Delete</button>
+      <button className="delete-message" onClick={handleMessageDelete}>Delete</button>
     </div>
     </>
   );
