@@ -6,13 +6,20 @@ The frontend of https://github.com/KajananGit/Chatroom_Backend_Project
 1. [Project Aims](#project-aims)
 2. [MVP](#mvp)
 3. [Extensions](#extensions)
-4. [Documentation](#documentation)
+4. [Libraries](#libraries)
 5. [Credits](#credits)
+6. [Resources](#resources)
+7. [Licenses](#licenses)
 
 ## Project Aims
 
+Our project aim is to create a client-side interactive chatroom for a server-side Spring API previously created by the back-end team. Our initial intention was to create this chatroom with an admin perspective with the ability to view, edit and delete all users, messages and chatrooms. This was later adapted to cater to a user-oriented experience by creating functionality to allow a user to login/signup where we could implement age-restricted chatrooms and allow users to enter many chatrooms with multiple users.
+
 ## MVP
-Start off with admin perspective.
+
+### Initial Approach
+
+Started off with admin perspective.
 
 Planning:
 * [x] Create trello board to track tasks to do, completed tasks and log errors
@@ -36,21 +43,43 @@ Messages:
 
 ![MVP wireframe](assets/MvpWireframe.png)
 
-# Extensions
+## Extensions
+
+### Initial Approach
 
 Build on top of admin dashboard to create user oriented website with sign up and profile pages.
+
+Pivot to user perspective
+* [x] Sign up page
+* [x] Login Page
+* [x] Profile Page
+
+Messages:
+* [x] Users can post messages
+* [x] Users can view messages within a chatroom
+* [x] User can edit their messages
+* [x] Users can delete messages
 
 ![Extensions wireframe](assets/ExtensionsWireframe.png)
 ![Final prop diagram](assets/PropDiagram.png)
 
-# Documentation
+### Further Extensions for the Future
 
+* [ ] Infinite scrolling for messages in a chatroom
+* [ ] Different CSS layouts for each page
 
-## Prerequisites
+## Libraries
+
+The names and versions of any libraries used:
+
+1. React: Version 18.2.0
+2. React Router DOM: Version 6.22.3
+
+### Prerequisites
 
 - Node.js https://nodejs.org/en/download
 
-## Installation
+### Installation
 
 1. Clone the repository:
 
@@ -70,7 +99,7 @@ Build on top of admin dashboard to create user oriented website with sign up and
     npm install
     ```
 
-## Usage
+### Usage
 
 1. Start the development server:
 
@@ -80,7 +109,7 @@ Build on top of admin dashboard to create user oriented website with sign up and
 
 2. Open your browser and visit [`http://localhost:3000`](http://localhost:3000) to view the application.
 
-## Contributing
+### Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -99,13 +128,21 @@ Contributions are welcome! Please follow these steps:
     ```
 5. Submit a pull request at:  [`https://github.com/osamui01/blether-frontend/pulls`](https://github.com/osamui01/blether-frontend/pulls).
 
-# Credits
+## Credits
 
 Give credit to the contributors of the project:
 |   |    |    Name     |         Github                        |
 |---|----|---------|---------------------------------|
-| K |    | Karen   | https://github.com/karenyip1999 |
+| K | 🌱 | Karen   | https://github.com/karenyip1999 |
 | A | 🦧 | Aebel   | https://github.com/Aebel-Shajan |
-| R |    | Ralph   | https://github.com/osamui01     |
-| Y |    | Yessica | https://github.com/ney601       |
+| R | 🥕 | Ralph   | https://github.com/osamui01     |
+| Y | 🐼 | Yesica  | https://github.com/ney601       |
 | T | 🎋 | Tommy   | https://github.com/Tommybui28   |
+
+## Resources
+
+1. https://www.cdnfonts.com/cartoon.font
+
+## Licenses
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
