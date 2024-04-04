@@ -1,7 +1,7 @@
 import Chatroom from "../Chatroom";
 import "../../styles/lists/ChatroomList.css";
 
-const ChatroomList = ({ chatrooms, deleteChatroom }) => {
+const ChatroomList = ({ chatrooms, deleteChatroom, setCurrentChatroomId }) => {
   const chatroomComponents = chatrooms.map((chatroom) => {
     return (
       <Chatroom
@@ -9,6 +9,7 @@ const ChatroomList = ({ chatrooms, deleteChatroom }) => {
         key={chatroom.id}
         chatroom={chatroom}
         deleteChatroom={deleteChatroom}
+        setCurrentChatroomId={setCurrentChatroomId}
       />
     );
   });

@@ -1,17 +1,18 @@
 import { useState } from "react";
 
-const NewMessageForm = ({ addMessage }) => {
+const NewMessageForm = ({ postMessage, currentUserId, currentChatroomId }) => {
     const [text, setText] = useState("");
   
     const handleFormSubmit = (event) => {
       event.preventDefault();
   
       const newMessage = {
-        text,
-        
-      };
+        content: text,
+        userId: currentUserId,
+        chatroomId: currentChatroomId
+        };
   
-      addMessage(newMessage);
+      postMessage(newMessage);
       setText("");
     };
   
