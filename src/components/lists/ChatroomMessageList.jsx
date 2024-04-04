@@ -7,7 +7,7 @@ const ChatroomMessageList = ({ chatroomMessages, deleteMessage }) => {
   return (
     <>
       <h3>Messages</h3>
-      <div>{chatroomMessageComponents}</div>
+      <div className="message-column">{chatroomMessageComponents}</div>
     </>
   );
 };
