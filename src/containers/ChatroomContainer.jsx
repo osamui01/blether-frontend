@@ -24,6 +24,7 @@ const API_ROOT = "http://localhost:8080";
 const ChatroomContainer = () => {
   const [users, setUsers] = useState([]);
   const [chatrooms, setChatrooms] = useState([]);
+  const [allMessages, setAllMessages] = useState([]);
   const [messages, setMessages] = useState([]);
   const [chatroomMessages, setChatroomMessages] = useState([]);
   const [filteredMessages, setFilteredMessages] = useState([]);
@@ -48,19 +49,18 @@ const ChatroomContainer = () => {
     setFilteredChatrooms(jsonData);
   };
 
-  // Will need to fetch messages for chatrooms later
-  // const fetchMessages = async () => {
-  //   const response = await fetch(`${API_ROOT}/messages`);
-  //   const jsonData = await response.json();
-  //   setMessages(jsonData);
-  //   setFilteredMessages(jsonData);
-  // }; --> for later
+  const fetchAllMessages = async () => {
+    const response = await fetch(`${API_ROOT}/messages`);
+    const jsonData = await response.json();
+    setAllMessages(jsonData);
+  };
 
   const fetchUserMessages = async (id) => {
     const response = await fetch(`${API_ROOT}/messages/user/` + id);
     const jsonData = await response.json();
     setMessages(jsonData);
     setFilteredMessages(jsonData);
+
   };
 
   const fetchChatroomMessages = async (id) => {
@@ -80,7 +80,9 @@ const ChatroomContainer = () => {
     // const savedMessage = await response.json();
     if (newMessage.chatroomId === currentChatroomId) {
       fetchChatroomMessages(currentChatroomId)
-    }  
+    } 
+    fetchAllMessages();
+  
   };
 
   const deleteMessage = async (id) => {
@@ -93,6 +95,7 @@ const ChatroomContainer = () => {
     if (currentChatroomId) {
       fetchChatroomMessages(currentChatroomId);
     }
+    fetchAllMessages();
   };
 
   const updateMessage = async (id) => {
@@ -104,6 +107,7 @@ const ChatroomContainer = () => {
       body: JSON.stringify(messages),
     });
     await fetchChatroomMessages();
+    fetchAllMessages();
   };
 
   const postUser = async (newUser) => {
@@ -179,7 +183,9 @@ const ChatroomContainer = () => {
   };
 
   const messageLoader = ({ params }) => {
-    return messages.find((message) => message.id === parseInt(params.id));
+    console.log(params);
+    console.log( allMessages.find((message) => message.id === parseInt(params.id)));
+    return allMessages.find((message) => message.id === parseInt(params.id));
   };
 
   //Searching for messages
@@ -310,6 +316,7 @@ const ChatroomContainer = () => {
   useEffect(() => {
     fetchUsers();
     fetchChatrooms();
+    fetchAllMessages();
   }, []);
 
   useEffect(() => {
