@@ -109,6 +109,7 @@ const ChatroomContainer = () => {
       headers: { "Content-Type": "application/json" },
     });
     setUsers(users.filter((user) => user.id !== id));
+    setFilteredUsers(filteredUsers.filter((user) => user.id !== id));
   };
 
   const postChatroom = async (newChatroom) => {
