@@ -1,3 +1,4 @@
+import "../styles/ChatroomNavigation.css"
 import { Link } from "react-router-dom";
 
 const ChatroomNavigation = ({ getCurrentChatroom }) => {
@@ -8,7 +9,7 @@ const ChatroomNavigation = ({ getCurrentChatroom }) => {
             <nav>
                 <ul>
                     <li>
-                        <Link className="chatroom-edit" to={`/chatrooms`} > Back </Link>
+                        <Link className="back-button" to={`/chatrooms`} > Back </Link>
                     </li>
 
                     <li>

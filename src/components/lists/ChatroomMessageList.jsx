@@ -1,4 +1,5 @@
 import Message from "../Message";
+import "../../styles/ChatroomMessageList.css"
 
 const ChatroomMessageList = ({ chatroomMessages, deleteMessage }) => {
   const chatroomMessageComponents = chatroomMessages.map((message) => {
@@ -7,7 +8,7 @@ const ChatroomMessageList = ({ chatroomMessages, deleteMessage }) => {
   return (
     <>
       <h3>Messages</h3>
-      <div className="message-column">{chatroomMessageComponents}</div>
+      <div className="chatroom-messages">{chatroomMessageComponents}</div>
     </>
   );
 };

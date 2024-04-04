@@ -53,7 +53,7 @@ Inside of Message.jsx
     width: calc(15% - 5px);
     height: calc(30% - 5px);
     padding: 10px;
-    border: 1px solid grey;;
+    border: 1px solid grey;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 1em;
