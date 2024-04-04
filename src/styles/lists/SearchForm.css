@@ -2,6 +2,7 @@
 .searching {
     padding-left: 2em;
     margin-top: 2px;
+    
 }
 
 /* Search bar box */
@@ -27,5 +28,11 @@
 /* Submit button when hovered on */
 .submitButton:hover {
     background-color: grey;
+}
+
+.search-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 

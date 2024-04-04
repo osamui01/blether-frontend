@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import "../../styles/EditUserForm.css";
 
 
 const EditUserForm = ({ getCurrentUser,updateUser, deleteUser}) => {
@@ -33,13 +33,13 @@ const EditUserForm = ({ getCurrentUser,updateUser, deleteUser}) => {
 
     return (
     <>
-        <h4>Edit user: </h4>
-            <div>
+        <h3>Edit user: </h3>
+            <div className="edit-user">
                 <form onSubmit={handleFormSubmit}>
-
-                    <h5>Current Username: {user.name}</h5>
-                    <h5>Current Email: {user.email}</h5>
-                    <h5>Current DateOfBirth: {user.dateOfBirth}</h5>
+                    <h4>Curren User Information</h4>
+                    <h5> {user.name}</h5>
+                    <h5> Email: {user.email}</h5>
+                    <h5>DateOfBirth: {user.dateOfBirth}</h5>
                     
                     <input
                         type="text"
