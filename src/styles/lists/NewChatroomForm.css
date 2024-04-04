@@ -16,5 +16,17 @@
     border-radius: 5px;
 }
 
+.new-chatroom-form form input[type="submit"] {
+    cursor: pointer;
+}
 
+.new-chatroom-form form input[type="submit"]:hover {
+    background-color: grey;
+}
+
+.new-chatroom-form form input[type="text"]:focus
+.new-chatroom-form form input[type = "number"]:focus {
+    outline: none;
+    border-color: red;
+}
 
