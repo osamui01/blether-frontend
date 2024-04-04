@@ -21,16 +21,15 @@ const NewUserForm = ({ postUser, setCurrentUserId }) => {
     setName("");
     setEmail("");
     setDateOfBirth("");
-    setCurrentUserId(savedUser.id)
+    setCurrentUserId(savedUser.id);
     navigate(`/chatrooms`);
   };
 
   return (
     <>
-    <h4>Add New User</h4>
+      <h4>Add New User</h4>
       <div className="new-user-form">
         <form onSubmit={handleFormSubmit}>
-        
           <input
             type="text"
             placeholder="Name"
