@@ -38,6 +38,7 @@ const NewChatroomForm = ({ postChatroom }) => {
         <input
           type="number"
           placeholder="Capacity"
+          min={1}
           value={capacity}
           onChange={(event) => setCapacity(event.target.value)}
           required
@@ -46,6 +47,7 @@ const NewChatroomForm = ({ postChatroom }) => {
         <input
           type="number"
           placeholder="Age limit"
+          min={10}
           value={ageLimit}
           onChange={(event) => setAgeLimit(event.target.value)}
           required

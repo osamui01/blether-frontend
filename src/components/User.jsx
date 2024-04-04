@@ -9,6 +9,7 @@ const User = ({ user, deleteUser }) => {
         <p> {user.name}</p>
         <p>Email: {user.email}</p>
         <p>D.O.B: {user.dateOfBirth}</p>
+
       </div>
     </>
   );

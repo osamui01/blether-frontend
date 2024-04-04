@@ -1,0 +1,64 @@
+/* h3 {
+    height: 2em;
+    margin: 1em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.edit-user form {
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+} */
+
+.edit-user {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.edit-user h5 {
+    margin: 7px;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.edit-user input[type="text"],
+.edit-user input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.edit-user button,
+.edit-user input[type="submit"] {
+  width: calc(50% - 5px);
+  height: calc(20% - 5px);
+  padding: 10px;
+  border: 1px solid grey;;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-user input {
+    margin-top: 1em;
+}
+
+.edit-user input[type="submit"],
+.edit-user button {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.edit-user button:hover {
+    background-color: red;
+}
+
+.edit-user input[type="submit"]:hover {
+    background-color: grey;
+  }

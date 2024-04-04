@@ -24,11 +24,13 @@ const ChatroomContainer = () => {
   const [users, setUsers] = useState([]);
   const [chatrooms, setChatrooms] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [chatroomMessages, setChatroomMessages] = useState([]);
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [filteredChatrooms, setFilteredChatrooms] = useState([]);
 
   const [currentUserId, setCurrentUserId] = useState(null);
+  const [currentChatroomId, setCurrentChatroomId] = useState(null);
   // Look into using useContext
 
   const fetchUsers = async () => {
@@ -58,19 +60,27 @@ const ChatroomContainer = () => {
     const jsonData = await response.json();
     setMessages(jsonData);
     setFilteredMessages(jsonData);
-  }; 
+  };
+
+  const fetchChatroomMessages = async (id) => {
+    const response = await fetch(`${API_ROOT}/messages/chatroom/` + id);
+    const jsonData = await response.json();
+    setChatroomMessages(jsonData);
+  };
 
   // add functionality to fetch messages for specific users later
 
-  // const postMessage = async (newUserMessage) => {
-  //   const response = await fetch(`${API_ROOT}/messages/user`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(newUserMessage),
-  //   });
-  //   const savedMessage = await response.json();
-  //   setUsers([...messages, savedMessage]);
-  // };
+  const postMessage = async (newMessage) => {
+     await fetch(`${API_ROOT}/messages`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newMessage),
+    });
+    // const savedMessage = await response.json();
+    if (newMessage.chatroomId === currentChatroomId) {
+      fetchChatroomMessages(currentChatroomId)
+    }  
+  };
 
   const deleteMessage = async (id) => {
     await fetch(`${API_ROOT}/messages/` + id, {
@@ -78,6 +88,10 @@ const ChatroomContainer = () => {
       headers: { "Content-Type": "application/json" },
     });
     setMessages(messages.filter((message) => message.id !== id));
+    setFilteredMessages(filteredMessages.filter((message) => message.id !== id));
+    if (currentChatroomId) {
+      fetchChatroomMessages(currentChatroomId);
+    }
   };
 
   const postUser = async (newUser) => {
@@ -88,6 +102,7 @@ const ChatroomContainer = () => {
     });
     const savedUser = await response.json();
     setUsers([...users, savedUser]);
+    setFilteredUsers([...users, savedUser]);
     return savedUser;
   };
 
@@ -108,6 +123,7 @@ const ChatroomContainer = () => {
       headers: { "Content-Type": "application/json" },
     });
     setUsers(users.filter((user) => user.id !== id));
+    setFilteredUsers(filteredUsers.filter((user) => user.id !== id));
   };
 
   const postChatroom = async (newChatroom) => {
@@ -118,6 +134,7 @@ const ChatroomContainer = () => {
     });
     const savedChatroom = await response.json();
     setChatrooms([...chatrooms, savedChatroom]);
+    setFilteredChatrooms([...chatrooms, savedChatroom]);
   };
 
   const deleteChatroom = async (id) => {
@@ -126,6 +143,9 @@ const ChatroomContainer = () => {
       headers: { "Content-Type": "application/json" },
     });
     setChatrooms(chatrooms.filter((chatroom) => chatroom.id !== id));
+    setFilteredChatrooms(
+      filteredChatrooms.filter((chatroom) => chatroom.id !== id)
+    );
   };
 
   const updateChatroom = async (chatroom) => {
@@ -167,6 +187,7 @@ const ChatroomContainer = () => {
     );
     setFilteredChatrooms(filterChatrooms);
   };
+
 
   const chatroomRoutes = createBrowserRouter([
     {
@@ -232,6 +253,7 @@ const ChatroomContainer = () => {
               <ChatroomList
                 chatrooms={filteredChatrooms}
                 deleteChatroom={deleteChatroom}
+                setCurrentChatroomId={setCurrentChatroomId}
               />
             </section>
           ),
@@ -243,28 +265,42 @@ const ChatroomContainer = () => {
         },
         {
           path: "/chatrooms/:id",
-          element: <>
-            <ChatroomNavigation />
-            <ChatroomMessageList />
-            <NewMessageForm />
-          </>
-        }
+          element: (
+            <>
+              <ChatroomNavigation />
+              <ChatroomMessageList 
+              chatroomMessages={chatroomMessages}
+              deleteMessage={ deleteMessage}
+              
+              />
+              <NewMessageForm 
+              postMessage={postMessage}
+              currentUserId={currentUserId}
+              currentChatroomId={currentChatroomId}
+              />
+            </>
+          ),
+        },
       ],
     },
   ]);
 
   useEffect(() => {
-
     fetchUsers();
     fetchChatrooms();
-    
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
+    if (currentChatroomId){
+      fetchChatroomMessages(currentChatroomId);
+    }
+  }, [currentChatroomId]);
+
+  useEffect(() => {
     if (currentUserId) {
       fetchUserMessages(currentUserId);
     }
-  }, [currentUserId])
+  }, [currentUserId]);
 
   return (
     <>
