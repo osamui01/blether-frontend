@@ -23,10 +23,10 @@ const NewChatroomForm = ({ postChatroom }) => {
 
   return (
     <>
+    <h3>Create a Chatroom</h3>
     <div className="new-chatroom-form">
       <form onSubmit={handleFormSubmit}>
-        <h4>Create a Chatroom</h4>
-
+        
         <input
           type="text"
           placeholder="Name"
