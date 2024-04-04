@@ -16,6 +16,7 @@ import EditChatroomForm from "../components/forms/EditChatroom";
 import ChatroomNavigation from "../components/ChatroomNavigation";
 import ChatroomMessageList from "../components/lists/ChatroomMessageList";
 import NewMessageForm from "../components/forms/NewMessageForm";
+import EditMessageForm from "../components/forms/EditMessage";
 
 
 const API_ROOT = "http://localhost:8080";
@@ -94,6 +95,17 @@ const ChatroomContainer = () => {
     }
   };
 
+  const updateMessage = async (id) => {
+    await fetch(`${API_ROOT}/messages/` + id, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messages),
+    });
+    await fetchChatroomMessages();
+  };
+
   const postUser = async (newUser) => {
     const response = await fetch(`${API_ROOT}/users`, {
       method: "POST",
@@ -164,6 +176,10 @@ const ChatroomContainer = () => {
   };
   const chatroomLoader = ({ params }) => {
     return chatrooms.find((chatroom) => chatroom.id === parseInt(params.id));
+  };
+
+  const messageLoader = ({ params }) => {
+    return messages.find((message) => message.id === parseInt(params.id));
   };
 
   //Searching for messages
@@ -278,8 +294,14 @@ const ChatroomContainer = () => {
               currentUserId={currentUserId}
               currentChatroomId={currentChatroomId}
               />
+            
             </>
           ),
+        },
+        {
+          path: "/messages/:id/edit",
+          loader: messageLoader,
+          element: <EditMessageForm updateMessage={updateMessage} />,
         },
       ],
     },
