@@ -1,9 +1,29 @@
 import "../styles/ChatroomNavigation.css"
+import { Link } from "react-router-dom";
 
-const ChatroomNavigation = () => {
-    return ( <div className="back-button">
-        <button>Back</button>
-    </div> );
+const ChatroomNavigation = ({ getCurrentChatroom }) => {
+
+    const currentChatroom = getCurrentChatroom();
+    return (
+        <div className="navDiv">
+            <nav>
+                <ul>
+                    <li>
+                        <Link className="back-button" to={`/chatrooms`} > Back </Link>
+                    </li>
+
+                    <li>
+                        {currentChatroom.name}
+                    </li>
+
+                    <li>
+                        <p>capacity: {currentChatroom.capacity}</p>
+                        <p>age limit: {currentChatroom.ageLimit}</p>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    );
 }
- 
+
 export default ChatroomNavigation;

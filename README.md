@@ -2,16 +2,20 @@
 
 The frontend of https://github.com/KajananGit/Chatroom_Backend_Project
 
-# Contents
-1. [MVP](#mvp)
-2. [Extensions](#extensions)
-3. [Documentation](#documentation)
-4. [Credits](#credits)
+## Contents
+1. [Project Aims](#project-aims)
+2. [MVP](#mvp)
+3. [Extensions](#extensions)
+4. [Documentation](#documentation)
+5. [Credits](#credits)
 
-# MVP
-Start of with admin perspective.
+## Project Aims
+
+## MVP
+Start off with admin perspective.
 
 Planning:
+* [x] Create trello board to track tasks to do, completed tasks and log errors
 * [x] Create wireframe
 * [x] Create props diagram
 
