@@ -167,6 +167,10 @@ const ChatroomContainer = () => {
     setFilteredChatrooms(filterChatrooms);
   };
 
+  const addMessage = (newMessage) => {
+    setMessages([...messages, newMessage]);
+  };
+
   const chatroomRoutes = createBrowserRouter([
     {
       path: "/login",
@@ -245,7 +249,7 @@ const ChatroomContainer = () => {
           element: <>
             <ChatroomNavigation />
             <ChatroomMessageList />
-            <NewMessageForm />
+            <NewMessageForm addMessage={addMessage}/>
           </>
         }
       ],
