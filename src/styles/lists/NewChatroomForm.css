@@ -1,0 +1,20 @@
+.new-chatroom-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.new-chatroom-form form input[type="text"],
+.new-chatroom-form form input[type="number"],
+.new-chatroom-form form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+
+

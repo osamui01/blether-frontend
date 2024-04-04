@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../styles/lists/NewChatroomForm.css"
 
 const NewChatroomForm = ({ postChatroom }) => {
   const [name, setName] = useState("");
@@ -22,6 +23,7 @@ const NewChatroomForm = ({ postChatroom }) => {
 
   return (
     <>
+    <div className="new-chatroom-form">
       <form onSubmit={handleFormSubmit}>
         <h4>Create a Chatroom</h4>
 
@@ -51,6 +53,7 @@ const NewChatroomForm = ({ postChatroom }) => {
 
         <input type="submit" value="Create Chatroom" />
       </form>
+      </div>
     </>
   );
 };
