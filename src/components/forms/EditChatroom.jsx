@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLoaderData} from 'react-router-dom';
-
+import "../../styles/EditChatroomForm.css";
 
 const EditChatroomForm = ({updateChatroom}) => {
     const chatroom = useLoaderData();
@@ -31,6 +31,7 @@ const EditChatroomForm = ({updateChatroom}) => {
 
 
     return (
+        <div className='edit-chatroom'>
         <form onSubmit={handleFormSubmit}>
             <h4>Edit Chatrooms: {chatroom.name} </h4>
 
@@ -63,6 +64,7 @@ const EditChatroomForm = ({updateChatroom}) => {
 
             <input type="submit" value="Edit Chatrooms" />
         </form>
+        </div>
     );
 }
 
