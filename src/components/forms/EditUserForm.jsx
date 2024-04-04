@@ -33,11 +33,11 @@ const EditUserForm = ({ getCurrentUser,updateUser, deleteUser}) => {
 
     return (
     <>
-        <h3>Edit user: </h3>
+        <h3>My Profile </h3>
             <div className="edit-user">
                 <form onSubmit={handleFormSubmit}>
-                    <h4>Curren User Information</h4>
-                    <h5> {user.name}</h5>
+                   
+                    <h5> Username: {user.name}</h5>
                     <h5> Email: {user.email}</h5>
                     <h5>DateOfBirth: {user.dateOfBirth}</h5>
                     
