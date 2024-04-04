@@ -22,6 +22,7 @@ const SearchForm = ({handleSearch}) => {
 
     return (
         <>
+        <div className="search-div">
         <form className= "searching" onSubmit={handleSubmit}>
         <input className = "searchBox"
         type = "text"
@@ -31,6 +32,7 @@ const SearchForm = ({handleSearch}) => {
          ></input>
          <input className = "submitButton" type = "submit" />
          </form>
+         </div>
         </>
     )
 }
