@@ -57,7 +57,7 @@ const ChatroomContainer = () => {
     const jsonData = await response.json();
     setMessages(jsonData);
     setFilteredMessages(jsonData);
-  }; 
+  };
 
   // add functionality to fetch messages for specific users later
 
@@ -87,6 +87,7 @@ const ChatroomContainer = () => {
     });
     const savedUser = await response.json();
     setUsers([...users, savedUser]);
+    setFilteredUsers([...users, savedUser]);
     return savedUser;
   };
 
@@ -117,6 +118,7 @@ const ChatroomContainer = () => {
     });
     const savedChatroom = await response.json();
     setChatrooms([...chatrooms, savedChatroom]);
+    setFilteredChatrooms([...chatrooms, savedChatroom]);
   };
 
   const deleteChatroom = async (id) => {
@@ -125,6 +127,9 @@ const ChatroomContainer = () => {
       headers: { "Content-Type": "application/json" },
     });
     setChatrooms(chatrooms.filter((chatroom) => chatroom.id !== id));
+    setFilteredChatrooms(
+      filteredChatrooms.filter((chatroom) => chatroom.id !== id)
+    );
   };
 
   const updateChatroom = async (chatroom) => {
@@ -257,17 +262,15 @@ const ChatroomContainer = () => {
   ]);
 
   useEffect(() => {
-
     fetchUsers();
     fetchChatrooms();
-    
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     if (currentUserId) {
       fetchUserMessages(currentUserId);
     }
-  }, [currentUserId])
+  }, [currentUserId]);
 
   return (
     <>
