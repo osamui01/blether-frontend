@@ -27,7 +27,7 @@ Inside of MessageList.jsx
 /*
 Inside of Message.jsx
 <p>{message.content}</p>
-      <button onClick={handleMessageDelete}>Delete</button>
+      <button className="delete-message" onClick={handleMessageDelete}>Delete</button>
 */
 .message-items {
     border: 2px solid black;
@@ -41,15 +41,26 @@ Inside of Message.jsx
     text-align: center;
   }
 
+  /* Header "User Messages" */
   h2 {
     height: 2em;
     margin: 1em;
     text-align: center;
   }
 
-  /* button {
-    border-radius: 20px;
+  /* Delete button */
+  .delete-message{
+    width: calc(15% - 5px);
+    height: calc(30% - 5px);
     padding: 10px;
-    font-size: 15px;
-    margin-top: 1.5em;
-  } */
+    border: 1px solid grey;;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1em;
+  }
+
+  /* Delete message button onHover*/
+  .delete-message:hover {
+    background-color: red;
+}
+

@@ -1,0 +1,41 @@
+/* Header "Create a chatroom" */
+h3 {
+    height: 2em;
+    text-align: center;
+    margin-bottom: -1em;
+}
+
+/* New chatroom form */
+.new-chatroom-form {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+/* Fields */
+.new-chatroom-form form input[type="text"],
+.new-chatroom-form form input[type="number"],
+.new-chatroom-form form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.new-chatroom-form form input[type="submit"] {
+    cursor: pointer;
+}
+
+.new-chatroom-form form input[type="submit"]:hover {
+    background-color: grey;
+}
+
+/* Alerts if field not filled */
+.new-chatroom-form form input[type="text"]:focus,
+.new-chatroom-form form input[type ="number"]:focus {
+    outline: none;
+    border-color: red;
+}
+

@@ -17,6 +17,7 @@ import ChatroomNavigation from "../components/ChatroomNavigation";
 import ChatroomMessageList from "../components/lists/ChatroomMessageList";
 import NewMessageForm from "../components/forms/NewMessageForm";
 
+
 const API_ROOT = "http://localhost:8080";
 
 const ChatroomContainer = () => {
@@ -303,7 +304,7 @@ const ChatroomContainer = () => {
 
   return (
     <>
-      <h1>Big Blether</h1>
+      <h1>BIG BLETHER</h1>
       <RouterProvider router={chatroomRoutes} />
     </>
   );
