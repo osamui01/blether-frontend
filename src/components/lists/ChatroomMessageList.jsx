@@ -1,8 +1,8 @@
 import Message from "../Message";
 
-const ChatroomMessageList = ({ chatroomMessages }) => {
+const ChatroomMessageList = ({ chatroomMessages, deleteMessage }) => {
   const chatroomMessageComponents = chatroomMessages.map((message) => {
-    return <Message key={message.id} chatroomMessages={chatroomMessages} />;
+    return <Message key={message.id} message={message} deleteMessage={deleteMessage}/>;
   });
   return (
     <>
