@@ -23,11 +23,13 @@ const ChatroomContainer = () => {
   const [users, setUsers] = useState([]);
   const [chatrooms, setChatrooms] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [chatroomMessages, setChatroomMessages] = useState([]);
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [filteredChatrooms, setFilteredChatrooms] = useState([]);
 
   const [currentUserId, setCurrentUserId] = useState(null);
+  const [currentChatroomId, setCurrentChatroomId] = useState(null);
   // Look into using useContext
 
   const fetchUsers = async () => {
@@ -57,7 +59,13 @@ const ChatroomContainer = () => {
     const jsonData = await response.json();
     setMessages(jsonData);
     setFilteredMessages(jsonData);
-  }; 
+  };
+
+  const fetchChatroomMessages = async (id) => {
+    const response = await fetch(`${API_ROOT}/messages/chatroom/` + id);
+    const jsonData = await response.json();
+    setChatroomMessages(jsonData);
+  };
 
   // add functionality to fetch messages for specific users later
 
@@ -242,28 +250,32 @@ const ChatroomContainer = () => {
         },
         {
           path: "/chatrooms/:id",
-          element: <>
-            <ChatroomNavigation />
-            <ChatroomMessageList />
-            <NewMessageForm />
-          </>
-        }
+          element: (
+            <>
+              <ChatroomNavigation />
+              <ChatroomMessageList chatroomMessages={chatroomMessages} />
+              <NewMessageForm />
+            </>
+          ),
+        },
       ],
     },
   ]);
 
   useEffect(() => {
-
     fetchUsers();
     fetchChatrooms();
-    
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
+    fetchChatroomMessages(currentChatroomId);
+  }, [currentChatroomId]);
+
+  useEffect(() => {
     if (currentUserId) {
       fetchUserMessages(currentUserId);
     }
-  }, [currentUserId])
+  }, [currentUserId]);
 
   return (
     <>
