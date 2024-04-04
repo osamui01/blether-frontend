@@ -67,6 +67,7 @@ Messages:
 
 * [ ] Infinite scrolling for messages in a chatroom
 * [ ] Different CSS layouts for each page
+* [ ] Edit existing messages
 
 ## Libraries
 
