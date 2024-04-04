@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../styles/NewMessageForm.css";
 
 const NewMessageForm = ({ postMessage, currentUserId, currentChatroomId }) => {
     const [text, setText] = useState("");
@@ -18,12 +19,12 @@ const NewMessageForm = ({ postMessage, currentUserId, currentChatroomId }) => {
   
     return (
       <>
+      <h3>Add a New Message</h3>
+      <div className="new-message">
         <form onSubmit={handleFormSubmit}>
-          <h4>Add a New Message</h4>
-  
           <input
             type="text"
-            placeholder="Type your message"
+            placeholder="Type your message..."
             value={text}
             onChange={(event) => setText(event.target.value)}
             required
@@ -31,6 +32,7 @@ const NewMessageForm = ({ postMessage, currentUserId, currentChatroomId }) => {
   
           <input type="submit" value="Send Message" />
         </form>
+        </div>
       </>
     );
   };
