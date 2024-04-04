@@ -1,18 +1,19 @@
+/* Header "Create a chatroom" */
 h3 {
     height: 2em;
-    margin: 1em;
     text-align: center;
-    margin-top: 2em;
+    margin-bottom: -1em;
 }
 
+/* New chatroom form */
 .new-chatroom-form {
     max-width: 400px;
-    margin: auto;
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
 }
 
+/* Fields */
 .new-chatroom-form form input[type="text"],
 .new-chatroom-form form input[type="number"],
 .new-chatroom-form form input[type="submit"] {
