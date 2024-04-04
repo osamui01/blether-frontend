@@ -43,16 +43,18 @@ const EditChatroomForm = ({updateChatroom}) => {
             />
 
             <input
-                type="text"
+                type="number"
                 placeholder="Capacity"
+                min={1}
                 value={capacity}
                 onChange={(event) => setCapacity(event.target.value)}
                 required
             />
 
             <input
-                type="text"
+                type="number"
                 placeholder="Age Limit"
+                min={10}
                 value={ageLimit}
                 onChange={(event) => setAgeLimit(event.target.value)}
                 required
