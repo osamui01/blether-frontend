@@ -1,6 +1,6 @@
 # Big Blether chatroom by KARYT & Co
 
-The frontend of https://github.com/KajananGit/Chatroom_Backend_Project
+The frontend of https://github.com/osamui01/blether-backend-copy
 
 ## Contents
 1. [Project Aims](#project-aims)
