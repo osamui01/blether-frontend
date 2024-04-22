@@ -26,38 +26,45 @@ Planning:
 * [x] Create wireframe
 * [x] Create props diagram
 
+Old MVPs:
 Users:
-* [x] Admin can delete user
-* [x] Admin can enter new user details
-* [x] Admin can update user details
-* [x] Admin can search/filter users
-
+~~* [x] Admin can delete user~~
+~~* [x] Admin can enter new user details~~
+~~* [x] Admin can update user details~~
+~~* [x] Admin can search/filter users~~
 Chatrooms:
-* [x] Admin can create a chatroom 
-* [x] Admin can update chatroom details
-* [x] Admin can delete a chatroom
-* [x] Admin search/filter chatrooms
-
+~~* [x] Admin can create a chatroom~~
+~~* [x] Admin can update chatroom details~~
+~~* [x] Admin can delete a chatroom~~
+~~* [x] Admin search/filter chatrooms~~
 Messages:
-* [x] Admin can view users messages
+~~* [x] Admin can view users messages~~
 
 ![MVP wireframe](assets/MvpWireframe.png)
 
-## Extensions
-
-### Initial Approach
 
 Build on top of admin dashboard to create user oriented website with sign up and profile pages.
-
 Pivot to user perspective
-* [x] Sign up page
-* [x] Login Page
-* [x] Profile Page
 
-Messages:
+Login page:
+* [x] User can login/select themselves from list
+* [x] User can register new user
+
+Profile page:
+* [x] User can edit their details
+* [x] User can search through their own messages
+
+Users page:
+* [x] User can search through other users on the site
+
+Chatrooms page:
+* [x] User can search chatrooms
+* [x] User can create a new chatroom
+* [x] User can enter a chatroom
+
+Chatroom Messages page:
 * [x] Users can post messages
 * [x] Users can view messages within a chatroom
-* [x] User can edit their messages
 * [x] Users can delete messages
 
 ![Extensions wireframe](assets/ExtensionsWireframe.png)
