@@ -18,30 +18,30 @@ Our project aim is to create a client-side interactive chatroom for a server-sid
 ## MVP
 
 ### Initial Approach
-
-Started off with admin perspective.
-
 Planning:
 * [x] Create trello board to track tasks to do, completed tasks and log errors
 * [x] Create wireframe
 * [x] Create props diagram
 
+<!-- 
 Old MVPs:
 Users:
-~~* [x] Admin can delete user~~
-~~* [x] Admin can enter new user details~~
-~~* [x] Admin can update user details~~
-~~* [x] Admin can search/filter users~~
+* [x] Admin can delete user
+* [x] Admin can enter new user details
+* [x] Admin can update user details
+* [x] Admin can search/filter users
 Chatrooms:
-~~* [x] Admin can create a chatroom~~
-~~* [x] Admin can update chatroom details~~
-~~* [x] Admin can delete a chatroom~~
-~~* [x] Admin search/filter chatrooms~~
+* [x] Admin can create a chatroom
+* [x] Admin can update chatroom details
+* [x] Admin can delete a chatroom
+* [x] Admin search/filter chatrooms
 Messages:
-~~* [x] Admin can view users messages~~
+* [x] Admin can view users messages
+-->
+
+Started off with admin perspective.
 
 ![MVP wireframe](assets/MvpWireframe.png)
-
 
 Build on top of admin dashboard to create user oriented website with sign up and profile pages.
 Pivot to user perspective
